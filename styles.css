@@ -1,0 +1,69 @@
+/* Basic reset */
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#ff6b6b;
+  --bg:rgba(255,255,255,0.92);
+  --dark:#222;
+}
+body{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;line-height:1.5;color:var(--dark)}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:999}
+.nav{width:100%;transition:all .25s ease;padding:12px 20px;background:transparent}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-weight:700;font-size:1.1rem;color:white}
+.nav-list{list-style:none;display:flex;gap:20px;align-items:center}
+.nav-link{display:inline-block;padding:8px 6px;color:white;text-decoration:none;border-radius:4px;transition:color .15s ease,background .15s ease}
+.nav-link:hover{color:var(--accent);background:rgba(255,255,255,0.06)}
+.nav-link.active{color:var(--accent);font-weight:600}
+
+/* Scrolled state */
+.nav.scrolled{background:var(--bg);backdrop-filter:blur(6px);box-shadow:0 4px 18px rgba(0,0,0,0.08);padding:8px 20px}
+.nav.scrolled .nav-brand{color:var(--dark)}
+.nav.scrolled .nav-link{color:var(--dark)}
+.nav.scrolled .nav-link:hover{color:var(--accent);background:rgba(0,0,0,0.05)}
+.nav.scrolled .nav-link.active{color:var(--accent);font-weight:600}
+
+/* Mobile */
+.nav-toggle{display:none;background:none;border:0;cursor:pointer}
+.hamburger{width:26px;height:2px;background:white;display:block;position:relative;transition:transform .2s ease}
+.hamburger::before,.hamburger::after{content:"";position:absolute;left:0;right:0;height:2px;background:white;display:block}
+.hamburger::before{top:-8px}
+.hamburger::after{top:8px}
+
+@media (max-width:800px){
+  .nav-list{position:fixed;top:60px;right:0;background:var(--bg);flex-direction:column;padding:16px;border-radius:8px;margin:0;display:none;min-width:180px;box-shadow:0 8px 22px rgba(0,0,0,0.12)}
+  .nav-list.open{display:flex}
+  .nav-toggle{display:block}
+  .hamburger, .hamburger::before, .hamburger::after{background:var(--dark)}
+  .nav{padding:8px 12px}
+}
+
+/* Hero and sections */
+.hero{height:80vh;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);display:flex;align-items:center;color:white;padding-top:80px}
+.hero-inner{max-width:1100px;margin:0 auto;padding:40px}
+.hero h1{font-size:2.4rem;margin-bottom:10px}
+.section{padding:100px 20px}
+.section.alt{background:#f7f7fb}
+.container{max-width:900px;margin:0 auto}
+
+/* Utility */
+.container p{margin-top:12px;color:#444}
+
+/* Accessibility focus */
+.nav-link:focus{outline:2px solid var(--accent);outline-offset:3px}
+/* Unique background colors for each section */
+#home.hero {
+  background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+  color: #fff;
+}
+#features.section {
+  background: #e3f2fd; /* Light blue */
+  color: #222;
+}
+#about.section {
+  background: #fff9c4; /* Light yellow */
+  color: #333;
+}
+#contact.section {
+  background: #c8e6c9; /* Light green */
+  color: #222;
+}
